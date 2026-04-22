@@ -1,10 +1,13 @@
-require("dotenv").config()
-const app = require("./src/app")
-const connectToDB = require("./src/config/database")
+const mongoose = require("mongoose");
 
-connectToDB()
+const connectToDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("MongoDB connected");
+  } catch (error) {
+    console.log("DB connection error:", error);
+    process.exit(1);
+  }
+};
 
-
-app.listen(3000, () => {
-    console.log("Server is running on port 3000")
-})
+module.exports = connectToDB;
