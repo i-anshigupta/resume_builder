@@ -7,7 +7,7 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: "https://resumebuilder-amber.vercel.app/login",
+    origin: "https://resumebuilder-amber.vercel.app",
     credentials: true
 }))
 
